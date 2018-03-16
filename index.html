@@ -3,8 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script language="javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 </head>
+<style>
+    html {
+        font-family: 'Montserrat', sans-serif;
+        /*-webkit-text-size-adjust: 100%;*/
+        /*-ms-text-size-adjust: 100%;*/
+    }
+    body {
+        background: url(images/bg.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #1a1a1a;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1.75;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        margin: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+    }
+    #menu-nav{
+        position: absolute;
+        background: rgba(10, 10, 10, 0.8);
+        min-height: 1000px;
+        height: 100%;
+        width: 270px;
+    }
+    nav>ul>li{
+        display:inline-block;
+        padding-left: 30px;
+        text-align: justify;
+        position:relative;
+        width: 240px;
+    }
+    nav>ul>li:hover{
+        background-color: #FF8000;
+    }
+    nav>ul>li>a{
+        display:block;
+        width: 270px;
+        text-decoration:none;
+        padding:0px;
+        line-height:50px;
+        color:white;
+        font-size: 14px;
+        font-weight:200;
+    }
+    nav>ul{
+        padding:0px;
+        width: 270px;
+        margin:0px;
+        list-style:none;
+        text-align:center;
+    }
+    nav ul ul{
+        position:absolute;
+        top: 1px;
+        display:none;
+        padding-left: 240px;
+        margin:0px;
+        list-style:none;
+        width:250px;
+    }
+    nav ul ul a{
+        display:block;
+        line-height:30px;
+        background: rgba(10, 10, 10, 0.8);
+        color:white;
+        font-weight: 200;
+        font-size: 14px;
+        text-decoration:none;
+        padding:10px 10px;
+    }
+    nav > ul > li:hover>ul{
+        float: top;
+        display:block;
+    }
+    nav ul ul a:hover{
+        color:#FF0;
+    }
+    #time{
+        list-style: none;
+        display: inline-block;
+        font-size: 23px;
+        font-weight: 500;
+        color: #fff;
+        margin-right: 20px
+    }
+    .buy-and-detail{
+        position: absolute;
+        top: 65px;
+        left: 260px;
+    }
+    .buy-and-detail >a{
+        text-decoration: none;
+        font-size: 18px;
+        border: white 1px solid;
+        border-radius: 5px;
+        padding: 12px 14px;
+        color: white;
+    }
+    .buy-and-detail >a:hover{
+        background-color: #FF8000;
+    }
+</style>
 <body>
+<div id="menu-nav">
+    <img src="images/logo.PNG" />
+    <nav>
+<ul>
+    <li><a  href="#">GIỚI THIỆU</a>
+    </li>
+    <li><a  href="#">NGHỆ SĨ</a>
+    </li>
+    <li><a  href="#">SHOP</a>
+    </li>
+    <li><a  href="#">ĐỐI TÁC</a>
+    </li>
+    <li><a  href="#">TÌM HIỂU THÊM</a>
+            <ul>
+                <li><a href="#">MMF 2016</a></li>
+                <li><a href="#">MMF 2015</a></li>
+                <li><a href="#">MMF 2014</a></li>
+                <li><a href="#">TRÁCH NHIỆM XÃ HỘI</a></li>
+            </ul>
+    </li>
+    <li><a  href="#">THƯ VIỆN</a>
+            <ul>
+                <li><a href="#">HÌNH ẢNH</a></li>
+                <li><a href="#">VIDEO</a></li>
+            </ul>
+    </li>
+    <li><a  href="#">LIÊN HỆ</a>
+    </li>
+</ul></nav>
+</div>
+<div id="banner">
+<img style="position: absolute;top: 170px;left: 390px" width="727px" src="images/banner-vi.png" />
+</div>
+<div style="position: absolute;left: 365px;top: 250px">
+    <i class="fa fa-calendar" style="font-size:20px;color:white"></i>
+    <div id="time"><a>&nbsp10-12 Tháng Mười Một 2017</a>&nbsp&nbsp&nbsp&nbsp
+    <i class="fa fa-map-marker" style="font-size:23px"></i>&nbsp&nbsp<a>&nbspHoàng Thành - Thăng Long - Hà Nội</a>
+    </div>
+    <div class="buy-and-detail">
+        <a href="#">Xem Chi Tiết<!----></a>
+        <a href="#">Mua Vé Ngay</a>
+    </div>
+    <div>CÁC ĐƠN VỊ TÀI TRỌ VÀ TỔ CHỨC</div>
+</div>
 
+<script language="javascript">
+    /*VIẾT JAVASCRIPT TẠI ĐÂY*/
+    $(document).ready(function() {
+        $("ul li a").hover(function()
+        {
+            var li = $(this).parent();
+
+            // Kiểm tra có phải click vào menu đã active ko
+            // nếu phải thì ko làm gì, ngược lại sẽ xử lý xổ menu con ra
+            if (li.hasClass("selected")) {
+                return false;
+            }
+            else {
+                // Xóa class selected khỏi các thẻ li khác
+                $('ul li').removeClass('selected');
+                // Thêm class selected vào thẻ li hiện tại
+                li.addClass("selected");
+            }
+
+            // return false nghĩa là cho trang đứng im
+            return false;
+
+        });
+    });
+</script>
 </body>
 </html>
